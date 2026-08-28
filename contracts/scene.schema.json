@@ -1,0 +1,130 @@
+{
+  "$ref": "#/definitions/scene",
+  "definitions": {
+    "scene": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999
+        },
+        "locationId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "timeOfDay": {
+          "type": "string",
+          "enum": [
+            "dawn",
+            "day",
+            "golden-hour",
+            "dusk",
+            "night",
+            "unspecified"
+          ],
+          "default": "day"
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 4000,
+          "default": ""
+        },
+        "action": {
+          "type": "string",
+          "maxLength": 20000,
+          "default": ""
+        },
+        "dialogue": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "characterId": {
+                "type": "string",
+                "default": ""
+              },
+              "characterName": {
+                "type": "string",
+                "default": ""
+              },
+              "text": {
+                "type": "string",
+                "default": ""
+              },
+              "emotion": {
+                "type": "string",
+                "default": ""
+              },
+              "delivery": {
+                "type": "string",
+                "default": ""
+              },
+              "voiceId": {
+                "type": "string",
+                "default": ""
+              },
+              "durationEstimate": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "emotion": {
+          "type": "string",
+          "maxLength": 200,
+          "default": ""
+        },
+        "visualGoal": {
+          "type": "string",
+          "maxLength": 1000,
+          "default": ""
+        },
+        "audioGoal": {
+          "type": "string",
+          "maxLength": 1000,
+          "default": ""
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7200,
+          "default": 0
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "locked"
+          ],
+          "default": "draft"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

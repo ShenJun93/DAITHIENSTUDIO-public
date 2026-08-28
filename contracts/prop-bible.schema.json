@@ -1,0 +1,88 @@
+{
+  "$ref": "#/definitions/prop-bible",
+  "definitions": {
+    "prop-bible": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^(CHAR|LOC|PROP|STY)\\d{3}$"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000,
+          "default": ""
+        },
+        "ownerCharacterId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "details": {
+          "type": "object",
+          "properties": {
+            "material": {
+              "type": "string",
+              "default": ""
+            },
+            "dimensions": {
+              "type": "string",
+              "default": ""
+            },
+            "color": {
+              "type": "string",
+              "default": ""
+            },
+            "condition": {
+              "type": "string",
+              "default": ""
+            },
+            "functionalBehavior": {
+              "type": "string",
+              "default": ""
+            },
+            "storyImportance": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "promptToken": {
+          "type": "string",
+          "maxLength": 400,
+          "default": ""
+        },
+        "continuityConstraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "locked"
+          ],
+          "default": "draft"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

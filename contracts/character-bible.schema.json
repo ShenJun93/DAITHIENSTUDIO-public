@@ -1,0 +1,195 @@
+{
+  "$ref": "#/definitions/character-bible",
+  "definitions": {
+    "character-bible": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^(CHAR|LOC|PROP|STY)\\d{3}$"
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 60,
+          "default": "supporting"
+        },
+        "identity": {
+          "type": "object",
+          "properties": {
+            "ageRange": {
+              "type": "string",
+              "default": ""
+            },
+            "species": {
+              "type": "string",
+              "default": "human"
+            },
+            "genderPresentation": {
+              "type": "string",
+              "default": ""
+            },
+            "height": {
+              "type": "string",
+              "default": ""
+            },
+            "bodyType": {
+              "type": "string",
+              "default": ""
+            },
+            "faceShape": {
+              "type": "string",
+              "default": ""
+            },
+            "skinTone": {
+              "type": "string",
+              "default": ""
+            },
+            "hair": {
+              "type": "string",
+              "default": ""
+            },
+            "eyes": {
+              "type": "string",
+              "default": ""
+            },
+            "distinguishingMarks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "variable": {
+          "type": "object",
+          "properties": {
+            "costume": {
+              "type": "string",
+              "default": ""
+            },
+            "accessories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "personality": {
+              "type": "string",
+              "default": ""
+            },
+            "motivation": {
+              "type": "string",
+              "default": ""
+            },
+            "weakness": {
+              "type": "string",
+              "default": ""
+            },
+            "comedyStyle": {
+              "type": "string",
+              "default": ""
+            },
+            "movementStyle": {
+              "type": "string",
+              "default": ""
+            },
+            "expressions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "poses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "costumeVariants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "description"
+                ],
+                "additionalProperties": false
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "promptToken": {
+          "type": "string",
+          "maxLength": 400,
+          "default": ""
+        },
+        "negativePrompt": {
+          "type": "string",
+          "maxLength": 2000,
+          "default": ""
+        },
+        "forbiddenChanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "colorPalette": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "voiceProfileId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "lockEnabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "locked"
+          ],
+          "default": "draft"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

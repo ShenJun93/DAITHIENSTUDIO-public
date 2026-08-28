@@ -1,0 +1,1 @@
+ALTER TABLE `voice_profiles` ADD `deleted_at` text;

@@ -1,0 +1,131 @@
+{
+  "$ref": "#/definitions/location-bible",
+  "definitions": {
+    "location-bible": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^(CHAR|LOC|PROP|STY)\\d{3}$"
+        },
+        "type": {
+          "type": "string",
+          "maxLength": 60,
+          "default": "interior"
+        },
+        "era": {
+          "type": "string",
+          "maxLength": 60,
+          "default": ""
+        },
+        "details": {
+          "type": "object",
+          "properties": {
+            "geography": {
+              "type": "string",
+              "default": ""
+            },
+            "architecture": {
+              "type": "string",
+              "default": ""
+            },
+            "layout": {
+              "type": "string",
+              "default": ""
+            },
+            "entrances": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "exits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "lighting": {
+              "type": "string",
+              "default": ""
+            },
+            "weather": {
+              "type": "string",
+              "default": ""
+            },
+            "timeVariations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "keyObjects": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "cameraPossibilities": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "ambientSound": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "promptBlock": {
+          "type": "string",
+          "maxLength": 2000,
+          "default": ""
+        },
+        "negativePrompt": {
+          "type": "string",
+          "maxLength": 2000,
+          "default": ""
+        },
+        "colorPalette": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "continuityNotes": {
+          "type": "string",
+          "maxLength": 2000,
+          "default": ""
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "locked"
+          ],
+          "default": "draft"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

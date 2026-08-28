@@ -1,0 +1,84 @@
+{
+  "$ref": "#/definitions/generation-request",
+  "definitions": {
+    "generation-request": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shotId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "promptId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "image",
+            "video",
+            "voice",
+            "music",
+            "sound",
+            "text"
+          ]
+        },
+        "provider": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "string",
+          "maxLength": 20000
+        },
+        "negativePrompt": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": {},
+          "default": {}
+        },
+        "referenceAssetIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 100
+        },
+        "idempotencyKey": {
+          "type": "string",
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "projectId",
+        "kind"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `audio_tracks` ADD `shot_id` text REFERENCES shots(id);

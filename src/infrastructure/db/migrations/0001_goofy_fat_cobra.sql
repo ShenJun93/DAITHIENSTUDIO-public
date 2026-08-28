@@ -1,0 +1,1 @@
+ALTER TABLE `shots` ADD `sort_index` integer DEFAULT 0 NOT NULL;

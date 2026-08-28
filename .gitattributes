@@ -1,0 +1,25 @@
+# Repository-wide text policy
+* text=auto eol=lf
+
+# Windows command scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# PowerShell scripts
+*.ps1 text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.mp3 binary
+*.wav binary
+*.mp4 binary
+*.mov binary
+*.sqlite binary
+*.db binary

@@ -1,0 +1,76 @@
+{
+  "$ref": "#/definitions/timeline-item",
+  "definitions": {
+    "timeline-item": {
+      "type": "object",
+      "properties": {
+        "shotId": {
+          "type": "string"
+        },
+        "shotCode": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "startSeconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "durationSeconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "videoAssetId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "voiceAssetId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "musicAssetId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "soundAssetIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "subtitle": {
+          "type": "string",
+          "default": ""
+        },
+        "missing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      },
+      "required": [
+        "shotId",
+        "shotCode",
+        "order",
+        "startSeconds",
+        "durationSeconds"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

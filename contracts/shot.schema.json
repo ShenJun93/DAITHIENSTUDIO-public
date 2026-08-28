@@ -1,0 +1,515 @@
+{
+  "$ref": "#/definitions/shot",
+  "definitions": {
+    "shot": {
+      "type": "object",
+      "properties": {
+        "sceneId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shotNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200,
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 4000,
+          "default": ""
+        },
+        "shotSize": {
+          "type": "string",
+          "enum": [
+            "extreme-wide",
+            "wide",
+            "full",
+            "medium",
+            "medium-close",
+            "close",
+            "extreme-close",
+            "insert",
+            "over-the-shoulder",
+            "two-shot",
+            "point-of-view"
+          ],
+          "default": "medium"
+        },
+        "cameraAngle": {
+          "type": "string",
+          "enum": [
+            "eye-level",
+            "low-angle",
+            "high-angle",
+            "dutch",
+            "birds-eye",
+            "worms-eye",
+            "over-shoulder"
+          ],
+          "default": "eye-level"
+        },
+        "cameraMovement": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "static",
+                "push-in",
+                "pull-out",
+                "pan-left",
+                "pan-right",
+                "tilt-up",
+                "tilt-down",
+                "handheld",
+                "crane-up",
+                "crane-down",
+                "dolly-follow",
+                "parallax",
+                "whip-pan",
+                "orbit"
+              ],
+              "default": "static"
+            },
+            "speed": {
+              "type": "string",
+              "enum": [
+                "static",
+                "slow",
+                "medium",
+                "fast"
+              ],
+              "default": "static"
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "lens": {
+          "type": "string",
+          "maxLength": 40,
+          "default": "50mm"
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600,
+          "default": 5
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "characterId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "versionId": {
+                "type": "string",
+                "default": ""
+              },
+              "screenPosition": {
+                "type": "string",
+                "enum": [
+                  "left",
+                  "center-left",
+                  "center",
+                  "center-right",
+                  "right",
+                  "off-screen"
+                ],
+                "default": "center"
+              },
+              "facing": {
+                "type": "string",
+                "enum": [
+                  "screen-left",
+                  "screen-right",
+                  "to-camera",
+                  "away-from-camera",
+                  "up",
+                  "down"
+                ],
+                "default": "to-camera"
+              },
+              "action": {
+                "type": "string",
+                "maxLength": 600,
+                "default": ""
+              },
+              "emotion": {
+                "type": "string",
+                "maxLength": 120,
+                "default": ""
+              }
+            },
+            "required": [
+              "characterId"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "locationId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "versionId": {
+                  "type": "string",
+                  "default": ""
+                }
+              },
+              "required": [
+                "locationId"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "props": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "propId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "versionId": {
+                "type": "string",
+                "default": ""
+              },
+              "heldBy": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": null
+              },
+              "state": {
+                "type": "string",
+                "maxLength": 200,
+                "default": "intact"
+              }
+            },
+            "required": [
+              "propId"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "dialogue": {
+          "type": "string",
+          "maxLength": 4000,
+          "default": ""
+        },
+        "emotion": {
+          "type": "string",
+          "maxLength": 200,
+          "default": ""
+        },
+        "lighting": {
+          "type": "string",
+          "maxLength": 400,
+          "default": ""
+        },
+        "visualEffects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "soundEffects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "continuity": {
+          "type": "object",
+          "properties": {
+            "incoming": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "maxLength": 1000,
+                  "default": ""
+                },
+                "characters": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "costume": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "hair": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "injuries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "default": []
+                      },
+                      "heldProps": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "default": []
+                      },
+                      "position": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "facing": {
+                        "type": "string",
+                        "enum": [
+                          "screen-left",
+                          "screen-right",
+                          "to-camera",
+                          "away-from-camera",
+                          "up",
+                          "down"
+                        ],
+                        "default": "to-camera"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "default": {}
+                },
+                "environment": {
+                  "type": "object",
+                  "properties": {
+                    "time": {
+                      "type": "string",
+                      "enum": [
+                        "dawn",
+                        "day",
+                        "golden-hour",
+                        "dusk",
+                        "night",
+                        "unspecified"
+                      ],
+                      "default": "unspecified"
+                    },
+                    "weather": {
+                      "type": "string",
+                      "enum": [
+                        "clear",
+                        "cloudy",
+                        "rain",
+                        "storm",
+                        "snow",
+                        "fog",
+                        "wind",
+                        "unspecified"
+                      ],
+                      "default": "unspecified"
+                    },
+                    "lightDirection": {
+                      "type": "string",
+                      "enum": [
+                        "screen-left",
+                        "screen-right",
+                        "front",
+                        "back",
+                        "top",
+                        "ambient",
+                        "unspecified"
+                      ],
+                      "default": "unspecified"
+                    },
+                    "damagedObjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": []
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
+            },
+            "outgoing": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "maxLength": 1000,
+                  "default": ""
+                },
+                "characters": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "costume": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "hair": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "injuries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "default": []
+                      },
+                      "heldProps": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "default": []
+                      },
+                      "position": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "facing": {
+                        "type": "string",
+                        "enum": [
+                          "screen-left",
+                          "screen-right",
+                          "to-camera",
+                          "away-from-camera",
+                          "up",
+                          "down"
+                        ],
+                        "default": "to-camera"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "default": {}
+                },
+                "environment": {
+                  "type": "object",
+                  "properties": {
+                    "time": {
+                      "type": "string",
+                      "enum": [
+                        "dawn",
+                        "day",
+                        "golden-hour",
+                        "dusk",
+                        "night",
+                        "unspecified"
+                      ],
+                      "default": "unspecified"
+                    },
+                    "weather": {
+                      "type": "string",
+                      "enum": [
+                        "clear",
+                        "cloudy",
+                        "rain",
+                        "storm",
+                        "snow",
+                        "fog",
+                        "wind",
+                        "unspecified"
+                      ],
+                      "default": "unspecified"
+                    },
+                    "lightDirection": {
+                      "type": "string",
+                      "enum": [
+                        "screen-left",
+                        "screen-right",
+                        "front",
+                        "back",
+                        "top",
+                        "ambient",
+                        "unspecified"
+                      ],
+                      "default": "unspecified"
+                    },
+                    "damagedObjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": []
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
+            },
+            "intentionalChanges": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "aspectRatio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:5",
+            "2.39:1",
+            "21:9",
+            "3:2"
+          ],
+          "default": "16:9"
+        },
+        "importance": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "key"
+          ],
+          "default": "normal"
+        }
+      },
+      "required": [
+        "sceneId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

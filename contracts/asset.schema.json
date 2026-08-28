@@ -1,0 +1,95 @@
+{
+  "$ref": "#/definitions/asset",
+  "definitions": {
+    "asset": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shotId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "generationId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "character",
+            "location",
+            "prop",
+            "style",
+            "storyboard",
+            "image",
+            "video",
+            "voice",
+            "music",
+            "sound",
+            "subtitle",
+            "prompt",
+            "document",
+            "export"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "mimeType": {
+          "type": "string",
+          "maxLength": 120,
+          "default": "application/octet-stream"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {},
+          "default": {}
+        },
+        "parentAssetIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "width": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        },
+        "durationSeconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "projectId",
+        "kind",
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

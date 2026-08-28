@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Two themes, one token set. Status is never communicated by colour alone —
+ * every badge carries a glyph and a word as well (rule 04).
+ */
+:root {
+  --surface-0: #f7f6f3;
+  --surface-1: #ffffff;
+  --surface-2: #f0eee9;
+  --surface-3: #e5e2db;
+  --ink-hi: #1a1917;
+  --ink-mid: #4a4741;
+  --ink-lo: #7d786f;
+  --line: #d9d5cc;
+  --brand: #2f6f9e;
+  --brand-soft: #dceaf5;
+
+  /* Semantic status roles. Every status pairs one of these with a glyph and a
+     word — never colour alone (rule 04, DESIGN.md "Status vocabulary"). */
+  --success: #0f7a52;
+  --success-soft: #dcefe6;
+  --warning: #8a5a00;
+  --warning-soft: #f6e6c5;
+  --destructive: #b91c1c;
+  --destructive-soft: #f8d7d7;
+  --info: var(--brand);
+  --info-soft: var(--brand-soft);
+  --blocked: #6d28d9;
+  --blocked-soft: #ece4fb;
+  --focus: var(--brand);
+
+  /* Motion budget — see docs/design/MOTION-GUIDELINES.md. */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
+  --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  color-scheme: light;
+}
+
+.dark {
+  --surface-0: #14161a;
+  --surface-1: #1b1e24;
+  --surface-2: #22262e;
+  --surface-3: #2b3038;
+  --ink-hi: #f2f1ee;
+  --ink-mid: #b8b5ae;
+  --ink-lo: #8a867e;
+  --line: #343a44;
+  --brand: #6aa9d8;
+  --brand-soft: #1e3547;
+
+  --success: #34d399;
+  --success-soft: #113526;
+  --warning: #fbbf24;
+  --warning-soft: #3a2c08;
+  --destructive: #f87171;
+  --destructive-soft: #3a1414;
+  --info: var(--brand);
+  --info-soft: var(--brand-soft);
+  --blocked: #c4b5fd;
+  --blocked-soft: #241c3a;
+  --focus: var(--brand);
+
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--surface-0);
+  color: var(--ink-hi);
+}
+
+body {
+  font-feature-settings: 'cv02', 'cv03', 'cv04';
+}
+
+*:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--brand-soft);
+}
+
+/* Keyboard users navigating the storyboard and asset grids get a visible ring. */
+[data-grid-item]:focus-within {
+  box-shadow: 0 0 0 2px var(--brand);
+}
+
+/*
+ * Motion wrapper keyframes backing src/components/motion/**. Bounded,
+ * single-run transitions only — see docs/design/MOTION-GUIDELINES.md.
+ * The prefers-reduced-motion rule above already collapses these.
+ */
+@layer utilities {
+  @keyframes section-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes metric-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-section-reveal {
+    animation: section-reveal var(--motion-base) var(--motion-ease) both;
+  }
+
+  .animate-metric-in {
+    animation: metric-in var(--motion-fast) var(--motion-ease) both;
+  }
+}

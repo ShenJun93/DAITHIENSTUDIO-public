@@ -1,0 +1,145 @@
+{
+  "$ref": "#/definitions/style-bible",
+  "definitions": {
+    "style-bible": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^(CHAR|LOC|PROP|STY)\\d{3}$"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "motion-comic-2.5d",
+            "stylized-3d",
+            "anime-manga-manhwa",
+            "photoreal-cinematic",
+            "claymation-stopmotion",
+            "surreal-dreamlike",
+            "product-commercial",
+            "avatar-presenter",
+            "motion-graphics",
+            "hybrid"
+          ],
+          "default": "stylized-3d"
+        },
+        "details": {
+          "type": "object",
+          "properties": {
+            "medium": {
+              "type": "string",
+              "default": ""
+            },
+            "renderingStyle": {
+              "type": "string",
+              "default": ""
+            },
+            "lineQuality": {
+              "type": "string",
+              "default": ""
+            },
+            "texture": {
+              "type": "string",
+              "default": ""
+            },
+            "material": {
+              "type": "string",
+              "default": ""
+            },
+            "colorPalette": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "contrast": {
+              "type": "string",
+              "default": ""
+            },
+            "lighting": {
+              "type": "string",
+              "default": ""
+            },
+            "cameraLanguage": {
+              "type": "string",
+              "default": ""
+            },
+            "lensBehavior": {
+              "type": "string",
+              "default": ""
+            },
+            "composition": {
+              "type": "string",
+              "default": ""
+            },
+            "characterProportions": {
+              "type": "string",
+              "default": ""
+            },
+            "environmentalDetail": {
+              "type": "string",
+              "default": ""
+            },
+            "motionStyle": {
+              "type": "string",
+              "default": ""
+            },
+            "editingStyle": {
+              "type": "string",
+              "default": ""
+            },
+            "transitionStyle": {
+              "type": "string",
+              "default": ""
+            },
+            "typography": {
+              "type": "string",
+              "default": ""
+            },
+            "subtitle": {
+              "type": "string",
+              "default": ""
+            },
+            "soundIdentity": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "promptBlock": {
+          "type": "string",
+          "maxLength": 3000,
+          "default": ""
+        },
+        "negativeStyleRules": {
+          "type": "string",
+          "maxLength": 3000,
+          "default": ""
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "locked"
+          ],
+          "default": "draft"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

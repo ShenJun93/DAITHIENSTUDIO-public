@@ -1,0 +1,89 @@
+{
+  "name": "dai-thien-tai-ai-visual-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Đại Thiên Tài AI Visual Studio — AI visual production studio (MVP vertical slice)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/infrastructure/db/migrate.ts",
+    "db:validate": "tsx src/infrastructure/db/validate.ts",
+    "db:seed": "tsx src/infrastructure/db/seed.ts",
+    "db:reset": "tsx src/infrastructure/db/reset.ts && npm run db:migrate && npm run db:seed",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "worker": "tsx src/infrastructure/queue/runWorker.ts",
+    "demo": "tsx src/infrastructure/db/seed.ts --force",
+    "verify": "npm run db:validate && npm run typecheck && npm run test && npm run acceptance:check && node scripts/quality/no-placeholder.mjs && node scripts/quality/no-localstorage-source.mjs && node scripts/quality/no-provider-hardcode.mjs",
+    "setup": "npm install && npm run db:migrate && npm run db:seed",
+    "test:integration": "vitest run tests/integration",
+    "test:unit": "vitest run tests/unit",
+    "test:e2e": "playwright test",
+    "acceptance:check": "node scripts/quality/verify-acceptance-criteria.mjs",
+    "demo:verify": "tsx scripts/demo-verify.ts",
+    "comfyui:smoke": "tsx scripts/comfyui-smoke.ts",
+    "schema:prisma": "tsx scripts/schema-to-prisma.ts",
+    "contracts:generate": "tsx scripts/contracts-generate.ts",
+    "remotion:spike": "tsx src/experimental/remotion/run-spike.ts",
+    "remotion:verify": "npm run verify && npm run build"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.501",
+    "@remotion/player": "4.0.501",
+    "@xyflow/react": "^12.11.2",
+    "better-sqlite3": "^12.11.1",
+    "clsx": "2.1.1",
+    "drizzle-orm": "^0.45.2",
+    "nanoid": "5.1.16",
+    "next": "15.5.24",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.501",
+    "sharp": "0.35.3",
+    "yaml": "^2.9.0",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@remotion/bundler": "^4.0.501",
+    "@remotion/renderer": "^4.0.501",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "22.10.7",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "autoprefixer": "10.4.20",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "9.18.0",
+    "eslint-config-next": "15.5.24",
+    "postcss": "8.5.23",
+    "tailwindcss": "3.4.17",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3",
+    "vitest": "3.0.4",
+    "zod-to-json-schema": "^3.24.1"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "allowScripts": {
+    "esbuild@0.18.20": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.23.1": true,
+    "better-sqlite3@12.11.1": true,
+    "unrs-resolver@1.12.2": true,
+    "sharp@0.35.3": true
+  },
+  "overrides": {
+    "fast-uri": "3.1.6",
+    "js-yaml": "4.3.1",
+    "postcss": {
+      ".": "8.5.23",
+      "nanoid": "3.3.18"
+    }
+  }
+}

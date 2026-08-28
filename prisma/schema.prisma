@@ -1,0 +1,518 @@
+// GENERATED FILE — do not edit.
+// Produced by `npm run schema:prisma` from src/infrastructure/db/schema.ts.
+//
+// This project runs on Drizzle + better-sqlite3 (see docs/decisions/ADR-002-persistence.md).
+// This schema is a reference rendering of the same model for Prisma-based
+// tooling and for anyone who wants to migrate later. There is no Prisma
+// client in the runtime and importing one would violate rule 02.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Workspaces {
+  id String @id
+  name String
+  slug String @unique
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("workspaces")
+}
+
+model Users {
+  id String @id
+  workspaceId String @map("workspace_id")
+  email String @unique
+  displayName String @map("display_name")
+  role String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("users")
+}
+
+model Projects {
+  id String @id
+  workspaceId String @map("workspace_id")
+  slug String @unique
+  title String
+  description String
+  genre String
+  format String
+  targetAudience String @map("target_audience")
+  platform String
+  language String
+  durationTargetSeconds Int @map("duration_target_seconds")
+  aspectRatio String @map("aspect_ratio")
+  secondaryAspectRatiosJson String @map("secondary_aspect_ratios_json")
+  frameRate Int @map("frame_rate")
+  resolution String
+  styleId String? @map("style_id")
+  status String
+  ownerId String @map("owner_id")
+  creativeBriefJson String @map("creative_brief_json")
+  costLimitUsd Float @map("cost_limit_usd")
+  productionStrategy String @map("production_strategy")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("projects")
+}
+
+model Episodes {
+  id String @id
+  projectId String @map("project_id")
+  code String
+  number Int
+  title String
+  synopsis String
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("episodes")
+}
+
+model ScriptDocuments {
+  id String @id
+  projectId String @map("project_id")
+  episodeId String? @map("episode_id")
+  title String
+  scriptType String @map("script_type")
+  raw String
+  version Int
+  status String
+  parsedAt String? @map("parsed_at")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("script_documents")
+}
+
+model Scenes {
+  id String @id
+  projectId String @map("project_id")
+  episodeId String? @map("episode_id")
+  code String
+  number Int
+  title String
+  locationId String? @map("location_id")
+  timeOfDay String @map("time_of_day")
+  summary String
+  action String
+  dialogueJson String @map("dialogue_json")
+  emotion String
+  visualGoal String @map("visual_goal")
+  audioGoal String @map("audio_goal")
+  durationSeconds Int @map("duration_seconds")
+  charactersJson String @map("characters_json")
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("scenes")
+}
+
+model Shots {
+  id String @id
+  projectId String @map("project_id")
+  episodeId String? @map("episode_id")
+  sceneId String @map("scene_id")
+  code String
+  shotNumber Int @map("shot_number")
+  sortIndex Int @map("sort_index")
+  title String
+  description String
+  shotSize String @map("shot_size")
+  cameraAngle String @map("camera_angle")
+  cameraMovementJson String @map("camera_movement_json")
+  lens String
+  durationSeconds Int @map("duration_seconds")
+  charactersJson String @map("characters_json")
+  locationId String? @map("location_id")
+  locationVersionId String? @map("location_version_id")
+  propsJson String @map("props_json")
+  dialogue String
+  emotion String
+  lighting String
+  visualEffectsJson String @map("visual_effects_json")
+  soundEffectsJson String @map("sound_effects_json")
+  continuityInJson String @map("continuity_in_json")
+  continuityOutJson String @map("continuity_out_json")
+  intentionalChangesJson String @map("intentional_changes_json")
+  aspectRatio String @map("aspect_ratio")
+  importance String
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("shots")
+}
+
+model Characters {
+  id String @id
+  projectId String @map("project_id")
+  code String
+  name String
+  role String
+  identityJson String @map("identity_json")
+  variableJson String @map("variable_json")
+  promptToken String @map("prompt_token")
+  negativePrompt String @map("negative_prompt")
+  forbiddenChangesJson String @map("forbidden_changes_json")
+  colorPaletteJson String @map("color_palette_json")
+  voiceProfileId String? @map("voice_profile_id")
+  currentVersion Int @map("current_version")
+  lockEnabled Boolean @map("lock_enabled")
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("characters")
+}
+
+model Locations {
+  id String @id
+  projectId String @map("project_id")
+  code String
+  name String
+  type String
+  era String
+  detailsJson String @map("details_json")
+  promptBlock String @map("prompt_block")
+  negativePrompt String @map("negative_prompt")
+  colorPaletteJson String @map("color_palette_json")
+  continuityNotes String @map("continuity_notes")
+  currentVersion Int @map("current_version")
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("locations")
+}
+
+model Props {
+  id String @id
+  projectId String @map("project_id")
+  code String
+  name String
+  description String
+  ownerCharacterId String? @map("owner_character_id")
+  detailsJson String @map("details_json")
+  promptToken String @map("prompt_token")
+  continuityConstraintsJson String @map("continuity_constraints_json")
+  currentVersion Int @map("current_version")
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("props")
+}
+
+model Styles {
+  id String @id
+  projectId String @map("project_id")
+  code String
+  name String
+  category String
+  detailsJson String @map("details_json")
+  promptBlock String @map("prompt_block")
+  negativeStyleRules String @map("negative_style_rules")
+  currentVersion Int @map("current_version")
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("styles")
+}
+
+model BibleVersions {
+  id String @id
+  kind String
+  refId String @map("ref_id")
+  version Int
+  payloadJson String @map("payload_json")
+  note String
+  createdAt String @map("created_at")
+
+  @@map("bible_versions")
+}
+
+model VoiceProfiles {
+  id String @id
+  projectId String @map("project_id")
+  name String
+  provider String
+  language String
+  voiceName String @map("voice_name")
+  speed Float
+  pitch Float
+  emotion String
+  style String
+  pronunciationJson String @map("pronunciation_json")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("voice_profiles")
+}
+
+model Prompts {
+  id String @id
+  projectId String @map("project_id")
+  shotId String? @map("shot_id")
+  kind String
+  name String
+  currentVersion Int @map("current_version")
+  status String
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("prompts")
+}
+
+model PromptVersions {
+  id String @id
+  promptId String @map("prompt_id")
+  version Int
+  blocksJson String @map("blocks_json")
+  compiled String
+  negative String
+  lockRefsJson String @map("lock_refs_json")
+  lintJson String @map("lint_json")
+  createdAt String @map("created_at")
+
+  @@map("prompt_versions")
+}
+
+model Generations {
+  id String @id
+  projectId String @map("project_id")
+  shotId String? @map("shot_id")
+  promptId String? @map("prompt_id")
+  promptVersion Int? @map("prompt_version")
+  kind String
+  provider String
+  model String
+  prompt String
+  negativePrompt String @map("negative_prompt")
+  paramsJson String @map("params_json")
+  referenceAssetsJson String @map("reference_assets_json")
+  seed Int?
+  status String
+  priority Int
+  attempts Int
+  maxAttempts Int @map("max_attempts")
+  lockedAt String? @map("locked_at")
+  lockedBy String? @map("locked_by")
+  scheduledAt String @map("scheduled_at")
+  startedAt String? @map("started_at")
+  finishedAt String? @map("finished_at")
+  estimatedCostUsd Float @map("estimated_cost_usd")
+  actualCostUsd Float @map("actual_cost_usd")
+  errorCode String? @map("error_code")
+  errorMessage String? @map("error_message")
+  rawResponseJson String @map("raw_response_json")
+  idempotencyKey String? @unique @map("idempotency_key")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("generations")
+}
+
+model Assets {
+  id String @id
+  projectId String @map("project_id")
+  shotId String? @map("shot_id")
+  generationId String? @map("generation_id")
+  kind String
+  name String
+  storageKey String @map("storage_key")
+  mimeType String @map("mime_type")
+  sizeBytes Int @map("size_bytes")
+  checksum String
+  width Int?
+  height Int?
+  durationSeconds Float? @map("duration_seconds")
+  tagsJson String @map("tags_json")
+  metadataJson String @map("metadata_json")
+  version Int
+  favorite Boolean
+  rating Int?
+  approvalState String @map("approval_state")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+  deletedAt String? @map("deleted_at")
+
+  @@map("assets")
+}
+
+model AssetRelations {
+  id String @id
+  parentId String @map("parent_id")
+  childId String @map("child_id")
+  relation String
+  createdAt String @map("created_at")
+
+  @@map("asset_relations")
+}
+
+model ProductionAssetBindings {
+  id String @id
+  projectId String @map("project_id")
+  assetId String @map("asset_id")
+  targetType String @map("target_type")
+  targetId String @map("target_id")
+  targetVersionId String @map("target_version_id")
+  role String
+  createdAt String @map("created_at")
+
+  @@map("production_asset_bindings")
+}
+
+model Approvals {
+  id String @id
+  projectId String @map("project_id")
+  targetType String @map("target_type")
+  targetId String @map("target_id")
+  decision String
+  note String
+  decidedBy String? @map("decided_by")
+  createdAt String @map("created_at")
+
+  @@map("approvals")
+}
+
+model QualityReports {
+  id String @id
+  projectId String @map("project_id")
+  targetType String @map("target_type")
+  shotId String? @map("shot_id")
+  assetId String? @map("asset_id")
+  score Int
+  passed Boolean
+  checksJson String @map("checks_json")
+  createdAt String @map("created_at")
+
+  @@map("quality_reports")
+}
+
+model WorkflowRuns {
+  id String @id
+  projectId String @map("project_id")
+  workflowKey String @map("workflow_key")
+  status String
+  stepsJson String @map("steps_json")
+  inputJson String @map("input_json")
+  outputJson String @map("output_json")
+  startedAt String @map("started_at")
+  finishedAt String? @map("finished_at")
+
+  @@map("workflow_runs")
+}
+
+model Timelines {
+  id String @id
+  projectId String @map("project_id")
+  episodeId String? @map("episode_id")
+  name String
+  itemsJson String @map("items_json")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("timelines")
+}
+
+model Exports {
+  id String @id
+  projectId String @map("project_id")
+  kind String
+  status String
+  storageKey String @map("storage_key")
+  frozenVersionsJson String @map("frozen_versions_json")
+  summaryJson String @map("summary_json")
+  createdAt String @map("created_at")
+
+  @@map("exports")
+}
+
+model Publishes {
+  id String @id
+  projectId String @map("project_id")
+  exportId String @map("export_id")
+  endpoint String
+  idempotencyKey String @map("idempotency_key")
+  status String
+  attemptCount Int @map("attempt_count")
+  lastError String? @map("last_error")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("publishes")
+}
+
+model NodeGraphs {
+  id String @id
+  projectId String @map("project_id")
+  name String
+  graphJson String @map("graph_json")
+  status String
+  version Int
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("node_graphs")
+}
+
+model ActivityLogs {
+  id String @id
+  projectId String? @map("project_id")
+  userId String? @map("user_id")
+  action String
+  targetType String @map("target_type")
+  targetId String @map("target_id")
+  detailsJson String @map("details_json")
+  createdAt String @map("created_at")
+
+  @@map("activity_logs")
+}
+
+model AudioMixes {
+  id String @id
+  episodeId String @unique @map("episode_id")
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("audio_mixes")
+}
+
+model AudioTracks {
+  id String @id
+  mixId String @map("mix_id")
+  layer String
+  assetId String @map("asset_id")
+  shotId String? @map("shot_id")
+  generationId String? @map("generation_id")
+  startTimeSeconds Float @map("start_time_seconds")
+  durationSeconds Float @map("duration_seconds")
+  gainDb Float @map("gain_db")
+  muted Int
+  createdAt String @map("created_at")
+  updatedAt String @map("updated_at")
+
+  @@map("audio_tracks")
+}

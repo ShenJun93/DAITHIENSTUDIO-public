@@ -1,0 +1,20 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          { "group": ["**/infrastructure/**"], "message": "Domain and UI must not import infrastructure directly. Go through the application layer / container." }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/app/**/*.ts", "src/app/**/*.tsx", "src/infrastructure/**/*.ts", "scripts/**/*.ts", "prisma/**/*.ts", "tests/**/*.ts"],
+      "rules": { "no-restricted-imports": "off" }
+    }
+  ],
+  "ignorePatterns": ["node_modules", ".next", "storage", "*.mjs"]
+}

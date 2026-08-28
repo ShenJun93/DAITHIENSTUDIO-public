@@ -1,0 +1,92 @@
+{
+  "$ref": "#/definitions/prompt-blocks",
+  "definitions": {
+    "prompt-blocks": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string",
+          "default": ""
+        },
+        "characterIdentity": {
+          "type": "string",
+          "default": ""
+        },
+        "action": {
+          "type": "string",
+          "default": ""
+        },
+        "expression": {
+          "type": "string",
+          "default": ""
+        },
+        "environment": {
+          "type": "string",
+          "default": ""
+        },
+        "composition": {
+          "type": "string",
+          "default": ""
+        },
+        "shotSize": {
+          "type": "string",
+          "default": ""
+        },
+        "cameraAngle": {
+          "type": "string",
+          "default": ""
+        },
+        "lens": {
+          "type": "string",
+          "default": ""
+        },
+        "cameraMovement": {
+          "type": "string",
+          "default": ""
+        },
+        "lighting": {
+          "type": "string",
+          "default": ""
+        },
+        "color": {
+          "type": "string",
+          "default": ""
+        },
+        "material": {
+          "type": "string",
+          "default": ""
+        },
+        "visualStyle": {
+          "type": "string",
+          "default": ""
+        },
+        "motion": {
+          "type": "string",
+          "default": ""
+        },
+        "physics": {
+          "type": "string",
+          "default": ""
+        },
+        "atmosphere": {
+          "type": "string",
+          "default": ""
+        },
+        "continuity": {
+          "type": "string",
+          "default": ""
+        },
+        "technicalSettings": {
+          "type": "string",
+          "default": ""
+        },
+        "negativePrompt": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

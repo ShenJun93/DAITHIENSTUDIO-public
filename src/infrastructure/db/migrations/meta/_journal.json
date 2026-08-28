@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1784984673964,
+      "tag": "0000_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785030061125,
+      "tag": "0001_goofy_fat_cobra",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785079573513,
+      "tag": "0002_special_invisible_woman",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785110599456,
+      "tag": "0003_funny_thena",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1785112658747,
+      "tag": "0004_daffy_jetstream",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1785116781418,
+      "tag": "0005_regular_albert_cleary",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1785127406614,
+      "tag": "0006_dear_the_santerians",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1785220562680,
+      "tag": "0007_burly_tinkerer",
+      "breakpoints": true
+    }
+  ]
+}

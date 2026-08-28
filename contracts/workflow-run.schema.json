@@ -1,0 +1,35 @@
+{
+  "$ref": "#/definitions/workflow-run",
+  "definitions": {
+    "workflow-run": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workflowKey": {
+          "type": "string",
+          "enum": [
+            "motion-comic",
+            "stylized-3d",
+            "photoreal",
+            "product",
+            "ugc",
+            "surreal"
+          ]
+        },
+        "autoEnqueueGenerations": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "required": [
+        "projectId",
+        "workflowKey"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

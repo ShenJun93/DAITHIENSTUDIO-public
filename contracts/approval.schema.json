@@ -1,0 +1,46 @@
+{
+  "$ref": "#/definitions/approval",
+  "definitions": {
+    "approval": {
+      "type": "object",
+      "properties": {
+        "targetType": {
+          "type": "string",
+          "enum": [
+            "shot",
+            "asset",
+            "script",
+            "character",
+            "style",
+            "storyboard",
+            "export"
+          ]
+        },
+        "targetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "rejected",
+            "changes-requested"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 2000,
+          "default": ""
+        }
+      },
+      "required": [
+        "targetType",
+        "targetId",
+        "decision"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

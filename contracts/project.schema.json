@@ -1,0 +1,192 @@
+{
+  "$ref": "#/definitions/project",
+  "definitions": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 4000,
+          "default": ""
+        },
+        "genre": {
+          "type": "string",
+          "maxLength": 120,
+          "default": ""
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "short-film",
+            "series",
+            "commercial",
+            "ugc",
+            "motion-comic",
+            "explainer",
+            "music-video",
+            "trailer"
+          ],
+          "default": "short-film"
+        },
+        "targetAudience": {
+          "type": "string",
+          "maxLength": 200,
+          "default": ""
+        },
+        "platform": {
+          "type": "string",
+          "enum": [
+            "youtube",
+            "tiktok",
+            "shorts",
+            "reels",
+            "facebook",
+            "website",
+            "tv",
+            "internal"
+          ],
+          "default": "youtube"
+        },
+        "language": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 12,
+          "default": "vi-VN"
+        },
+        "durationTargetSeconds": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 36000,
+          "default": 300
+        },
+        "aspectRatio": {
+          "type": "string",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:5",
+            "2.39:1",
+            "21:9",
+            "3:2"
+          ],
+          "default": "16:9"
+        },
+        "secondaryAspectRatios": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "16:9",
+              "9:16",
+              "1:1",
+              "4:5",
+              "2.39:1",
+              "21:9",
+              "3:2"
+            ]
+          },
+          "default": [
+            "9:16"
+          ]
+        },
+        "frameRate": {
+          "type": "number",
+          "enum": [
+            24,
+            25,
+            30,
+            60
+          ],
+          "default": 24
+        },
+        "resolution": {
+          "type": "string",
+          "pattern": "^\\d{3,5}x\\d{3,5}$",
+          "default": "1920x1080"
+        },
+        "stylePresetKey": {
+          "type": "string"
+        },
+        "costLimitUsd": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100000,
+          "default": 25
+        },
+        "creativeBrief": {
+          "type": "object",
+          "properties": {
+            "logline": {
+              "type": "string",
+              "default": ""
+            },
+            "synopsis": {
+              "type": "string",
+              "default": ""
+            },
+            "theme": {
+              "type": "string",
+              "default": ""
+            },
+            "tone": {
+              "type": "string",
+              "default": ""
+            },
+            "references": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "hook": {
+              "type": "string",
+              "default": ""
+            },
+            "cliffhanger": {
+              "type": "string",
+              "default": ""
+            },
+            "beats": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "act": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "act",
+                  "title",
+                  "description"
+                ],
+                "additionalProperties": false
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,39 @@
+{
+  "$ref": "#/definitions/script",
+  "definitions": {
+    "script": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 160,
+          "default": "Main script"
+        },
+        "scriptType": {
+          "type": "string",
+          "enum": [
+            "screenplay",
+            "youtube",
+            "tiktok",
+            "commercial",
+            "voice-over",
+            "documentary",
+            "dialogue",
+            "motion-comic",
+            "shot-based"
+          ],
+          "default": "motion-comic"
+        },
+        "raw": {
+          "type": "string",
+          "maxLength": 400000
+        }
+      },
+      "required": [
+        "raw"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

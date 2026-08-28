@@ -1,0 +1,245 @@
+{
+  "$ref": "#/definitions/continuity",
+  "definitions": {
+    "continuity": {
+      "type": "object",
+      "properties": {
+        "incoming": {
+          "type": "object",
+          "properties": {
+            "note": {
+              "type": "string",
+              "maxLength": 1000,
+              "default": ""
+            },
+            "characters": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "costume": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "hair": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "injuries": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "heldProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "position": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "facing": {
+                    "type": "string",
+                    "enum": [
+                      "screen-left",
+                      "screen-right",
+                      "to-camera",
+                      "away-from-camera",
+                      "up",
+                      "down"
+                    ],
+                    "default": "to-camera"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "default": {}
+            },
+            "environment": {
+              "type": "object",
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "enum": [
+                    "dawn",
+                    "day",
+                    "golden-hour",
+                    "dusk",
+                    "night",
+                    "unspecified"
+                  ],
+                  "default": "unspecified"
+                },
+                "weather": {
+                  "type": "string",
+                  "enum": [
+                    "clear",
+                    "cloudy",
+                    "rain",
+                    "storm",
+                    "snow",
+                    "fog",
+                    "wind",
+                    "unspecified"
+                  ],
+                  "default": "unspecified"
+                },
+                "lightDirection": {
+                  "type": "string",
+                  "enum": [
+                    "screen-left",
+                    "screen-right",
+                    "front",
+                    "back",
+                    "top",
+                    "ambient",
+                    "unspecified"
+                  ],
+                  "default": "unspecified"
+                },
+                "damagedObjects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": []
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "outgoing": {
+          "type": "object",
+          "properties": {
+            "note": {
+              "type": "string",
+              "maxLength": 1000,
+              "default": ""
+            },
+            "characters": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "costume": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "hair": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "injuries": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "heldProps": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  },
+                  "position": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "facing": {
+                    "type": "string",
+                    "enum": [
+                      "screen-left",
+                      "screen-right",
+                      "to-camera",
+                      "away-from-camera",
+                      "up",
+                      "down"
+                    ],
+                    "default": "to-camera"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "default": {}
+            },
+            "environment": {
+              "type": "object",
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "enum": [
+                    "dawn",
+                    "day",
+                    "golden-hour",
+                    "dusk",
+                    "night",
+                    "unspecified"
+                  ],
+                  "default": "unspecified"
+                },
+                "weather": {
+                  "type": "string",
+                  "enum": [
+                    "clear",
+                    "cloudy",
+                    "rain",
+                    "storm",
+                    "snow",
+                    "fog",
+                    "wind",
+                    "unspecified"
+                  ],
+                  "default": "unspecified"
+                },
+                "lightDirection": {
+                  "type": "string",
+                  "enum": [
+                    "screen-left",
+                    "screen-right",
+                    "front",
+                    "back",
+                    "top",
+                    "ambient",
+                    "unspecified"
+                  ],
+                  "default": "unspecified"
+                },
+                "damagedObjects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": []
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
+        "intentionalChanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
